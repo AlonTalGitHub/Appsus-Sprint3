@@ -7,7 +7,7 @@ const Router = ReactRouterDOM.HashRouter
 const { Switch, Link, Route } = ReactRouterDOM
 const { createBrowserHistory } = History
 
-class EmailApp extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <Router history={history}>
@@ -25,6 +25,6 @@ class EmailApp extends React.Component {
 }
 
 ReactDOM.render(
-    <EmailApp />,
+    <App />,
     document.getElementById('root')
 )
