@@ -2,7 +2,7 @@ import emailService from "../services/emailService.js"
 import EmailPreview from "../cmps/emails/EmailPreview.jsx";
 const { Link } = ReactRouterDOM
 
-export default class EmailListPage extends React.Component {
+export default class EmailList extends React.Component {
     state = {emails: []}
 
     componentDidMount() {
