@@ -49,3 +49,8 @@ function createNotes(numOfNotes) {
 function getNotes(){
     return Promise.resolve(gNotes);
 }
+export default {
+    getNotes,
+    createNotes,
+    createNote
+}
