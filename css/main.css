@@ -1,0 +1,9 @@
+.mail-compose {
+    display: flex;
+    flex-direction: column;
+    background: beige;
+    padding: 17px;
+    height: 221px;
+    position: absolute;
+    bottom: 0;
+}

@@ -4,9 +4,7 @@ export default class EmailDetails extends React.Component {
 
     render() {
         const { email } = this.props;
-        // console.log(this.props);
-        
-        // console.log(email)
+
         return (<div className="email-container">
             <h2>{email.subject}</h2>
             <p>{email.body}</p>
