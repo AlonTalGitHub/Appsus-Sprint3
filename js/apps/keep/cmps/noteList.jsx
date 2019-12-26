@@ -1,5 +1,6 @@
 import keepService from '../services/keepService.js'
 import NotePreview from "../cmps/NotePreview.jsx";
+import FilterPreview from '../cmps/FilterPreview.jsx';
 //import Filter from "../cmps/Cars/Filter.jsx";
 const { Link } = ReactRouterDOM
 export default class NoteList extends React.Component {
@@ -15,20 +16,24 @@ export default class NoteList extends React.Component {
         })
     }
 
-    // handleChange = (changeFilterField) =>{
-    //     this.setState(prevState => ({filterBy : {...prevState.filterBy , ...changeFilterField}}) , 
-    //     this.loadNotes);
-    // }
+    handleChange = (changeFilterField) =>{
+        this.setState(() => ({filterBy : {...changeFilterField}}) , 
+        this.loadNotes);
+        //console.log(changeFilterField);
+    }
 
     render() {
-        return (
+        return (<div>
+            <FilterPreview filterBy={this.state.filterBy} handleChange={this.handleChange}/>
             <ul>{this.state.notes.map((note, index) => {
                 console.log(note)
                 return <NotePreview note={note} key={index}/>
-            })}</ul>
+            })}</ul></div>
         );
     }
 }
+
+
 
 {/* <Filter filterBy={this.state.filterBy} handleChange={this.handleChange}></Filter>
 
