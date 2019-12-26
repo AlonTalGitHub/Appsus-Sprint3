@@ -3,32 +3,32 @@ import EmailDetails from '../pages/EmailDetails.jsx'
 
 export default class EmailPage extends React.Component {
 
-    // state = {
-    //     pet: null
-    // }
-    // componentDidMount() {
-    //     this.loadPet();
-    // }
+    state = {
+        email: null
+    }
+    componentDidMount() {
+        this.loadEmail();
+    }
 
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.match.params.id
-    //         !== this.props.match.params.id) {
-    //         this.loadPet();
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id
+            !== this.props.match.params.id) {
+            this.loadEmail();
+        }
+    }
 
-    // loadPet() {
-    //     console.log(this.props)
-    //     const { id } = this.props.match.params;
-    //     petsService.getPetById(id).then(pet => {
-    //         this.setState({ pet })
-    //     })
-    // }
+    loadEmail() {
+        console.log(this.props)
+        const { id } = this.props.match.params;
+        emailService.getEmailById(id).then(email => {
+            this.setState({ email })
+        })
+    }
 
-    // goBack = () => {
-    //     this.props.history.push('/pets')
-    //     // this.props.history.goBack()
-    // }
+    goBack = () => {
+        this.props.history.push('/emails')
+        // this.props.history.goBack()
+    }
 
     // onDelete = (pet)=>{
     //     petsService.deletePet(pet).then(()=>{
@@ -44,7 +44,8 @@ export default class EmailPage extends React.Component {
 
 
     render() {
-        if (!this.state.pet) return <div className="loading">Loading...</div>
-        return <PetDetails pet={this.state.pet} onAddNickname={this.onAddNickname} goBack={this.goBack}></PetDetails>
+        console.log(this.state.email)
+        if (!this.state.email) return <div className="loading">Loading...</div>
+        return <EmailDetails email={this.state.email} goBack={this.goBack}></EmailDetails>
     }
 }
