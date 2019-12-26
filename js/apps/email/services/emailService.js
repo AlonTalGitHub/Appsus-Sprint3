@@ -6,7 +6,7 @@ export default {
     getEmailById
 }
 
-let gEmails = [new Email('hi1' , 'I love you 2, you are genius!') , new Email('hi2' , 'I love you 2, you are genius!'), new Email('hi3' , 'I love you 3, you are genius!')];
+let gEmails = [new Email('hi1' , 'I love you 1, you are genius!') , new Email('hi2' , 'I love you 2, you are genius!'), new Email('hi3' , 'I love you 3, you are genius!')];
 
 function query(filterBy){
     if (filterBy) return Promise.resolve(gEmails.filter(email=>{
