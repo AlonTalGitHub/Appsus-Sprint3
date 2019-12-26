@@ -5,6 +5,7 @@ import Navbar from './js/apps/email/cmps/Navbar.jsx'
 import EmailDetails from './js/apps/email/pages/EmailDetails.jsx'
 import EmailPage from './js/apps/email/pages/EmailPage.jsx'
 import EmailApp from './js/apps/email/pages/EmailApp.jsx'
+import EmailCompose from './js/apps/email/cmps/emails/EmailCompose.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Switch, Link, Route } = ReactRouterDOM
@@ -23,7 +24,6 @@ class App extends React.Component {
                         <Route path="/notes" component={KeepPage} exact></Route>
                     </Switch>
                 </main>
-                {/* <Sidebar></Sidebar> */}
             </Router>
         )
     }

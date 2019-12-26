@@ -36,13 +36,6 @@ export default class EmailPage extends React.Component {
     //     });
     // }
     
-    // onAddNickname =(name)=>{
-    //     petsService.addNickname(this.state.pet.id , name).then(pet=>{
-    //         this.setState({ pet })
-    //     })
-    // }
-
-
     render() {
         console.log(this.state.email)
         if (!this.state.email) return <div className="loading">Loading...</div>

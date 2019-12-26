@@ -3,10 +3,11 @@ import Email from "./Email.js";
 export default {
     query,
     saveEmail,
-    getEmailById
+    getEmailById,
+    getStarred
 }
 
-let gEmails = [new Email('hi1' , 'I love you 1, you are genius!') , new Email('hi2' , 'I love you 2, you are genius!'), new Email('hi3' , 'I love you 3, you are genius!')];
+let gEmails = [new Email('hi1' , 'I love you 1, you are genius!', true) , new Email('hi2' , 'I love you 2, you are genius!', false), new Email('hi3' , 'I love you 3, you are genius!', false)];
 
 function query(filterBy){
     if (filterBy) return Promise.resolve(gEmails.filter(email=>{
@@ -14,6 +15,12 @@ function query(filterBy){
     }))
 
     return Promise.resolve([...gEmails]);
+}
+
+function getStarred() {
+    return Promise.resolve(gEmails.filter(email=>{
+        return email.isStarred === true
+    })) 
 }
 
 function getEmailById(emailId){
