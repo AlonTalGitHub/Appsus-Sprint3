@@ -4,35 +4,42 @@ import FilterPreview from '../cmps/FilterPreview.jsx';
 //import Filter from "../cmps/Cars/Filter.jsx";
 const { Link } = ReactRouterDOM
 export default class NoteList extends React.Component {
-    state = { notes: [], filterBy: { title: '', color: '', text: '' } }
+    //state = { notes: [], filterBy: { title: '', color: '', text: '' } }
 
     componentDidMount() {
-        this.loadNotes();
+        this.props.loadNotes();
+        console.log(this.props);
     }
 
-    loadNotes = () => {
-        keepService.query(this.state.filterBy).then((notes) => {
-            this.setState({ notes });
-        })
-    }
+    // loadNotes = () => {
+    //     keepService.query(this.state.filterBy).then((notes) => {
+    //         this.setState({ notes });
+    //     })
+    // }
 
-    handleChange = (changeFilterField) =>{
-        this.setState(() => ({filterBy : {...changeFilterField}}) , 
-        this.loadNotes);
-        //console.log(changeFilterField);
-    }
+    // handleChange = (changeFilterField) =>{
+    //     this.setState(() => ({filterBy : {...changeFilterField}}) , 
+    //     this.loadNotes);
+    //     //console.log(changeFilterField);
+    // }
 
     render() {
         return (<div>
-            <FilterPreview filterBy={this.filterBy} handleChange={this.handleChange}/>
-            <ul>{this.state.notes.map((note, index) => {
+            <FilterPreview filterBy={this.props.filterBy} handleChange={this.props.handleChange} />
+            <ul>{this.props.notes.map((note, index) => {
                 console.log(note)
-                return <NotePreview note={note} key={index}/>
-            })}</ul></div>
+                return <NotePreview note={note} key={index} />
+            })}</ul>
+        </div>
         );
     }
 }
 
+{/* <FilterPreview filterBy={this.props.filterBy} handleChange={this.props.handleChange}/>
+            <ul>{this.props.notes.map((note, index) => {
+                console.log(note)
+                return <NotePreview note={note} key={index}/>
+            })}</ul> */}
 
 
 {/* <Filter filterBy={this.state.filterBy} handleChange={this.handleChange}></Filter>

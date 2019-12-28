@@ -29,7 +29,8 @@ export default class AddNote extends React.Component {
             noteContent: noteContent,
             isPinned: false
         }
-        keepService.saveNote(noteDetails);
+        var NOTE = keepService.saveNote(noteDetails);
+        NOTE.then((res) => { this.props.updateNotes(res) });
         return noteDetails;
     }
     render() {
