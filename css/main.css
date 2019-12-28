@@ -46,9 +46,11 @@ a { text-decoration: none; color:inherit; }
 
 .email-list li { border-top: 0.5px solid #e1e0e0; } 
 .mail-compose { display: flex; flex-direction: column; font-family: noto-sans, sans-serif; background: beige; padding: 17px; height: 221px; position: absolute; bottom: 0; } 
-.note-container { widows: 250px; height: 250px; border: 2px solid black; border-radius: 20%; position: relative; margin:5px; } 
+/*notes*/
+.note-container { width: 250px; height: 250px; border: 2px solid black; border-radius: 20%; position: relative; margin:5px; padding: 10px } 
 .note-list { background-color:gray; list-style-type: none; } 
-.note-container span { position: absolute; left: 40%; } 
+.note-container span { position: absolute; left: 30%; text-decoration: underline; text-decoration-style: double; } 
+.note-content { padding:30px; } 
 
 
 
