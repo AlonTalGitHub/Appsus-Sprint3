@@ -31,12 +31,9 @@ export default class EmailApp extends React.Component {
     }
 
     setFolder = (folder) =>{
-        if (folder === 'starred') {
-            emailService.getStarred().then((emails) => {
-                this.setState({ emails });
-            })
-        }
-        if (folder === 'inbox') this.loadEmails();
+        emailService.getEmailsToRender(folder).then((emails) => {
+            this.setState({ emails });
+        })
     }
 
     toggleCompose = () => {
@@ -48,8 +45,8 @@ export default class EmailApp extends React.Component {
     render() {
         return <React.Fragment>
             <Filter onFilter={this.onFilter}></Filter>
-
             {this.state.isComposing && <EmailCompose></EmailCompose>}
+
             <Sidebar toggleCompose={this.toggleCompose} setFolder={this.setFolder}></Sidebar>
             <EmailList emails={this.state.emails}></EmailList>
         </React.Fragment>

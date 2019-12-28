@@ -12,7 +12,7 @@ export default class EmailPreview extends React.Component {
         const { props } = this;
         return <Link to={`/emails/${props.email.id}`}>
             <li onClick={this.onSelectEmail}>
-                <h2>{props.email.subject}</h2>
+                <span>{props.email.subject}</span>
             </li>
         </Link>
     }
