@@ -13,22 +13,30 @@ function genId() {
     }
     return id;
 }
-function createNote(type) {
-
-    // return {
-    //     id: genId(),
-    //     type: 'Text',
-    //     isPinned: false,
-    //     info: {
-    //         url: '',
-    //         title: '',
-    //         text: getRandomText(),
-    //         color: ''
-    //     },
-    //     timeStamp: (new Date).getTime()
-    // }
-    let note= new Note(type,isPinned='false',color='blue');
-    note.info.text=getRandomText();
+function createNote(type, title, noteContent,isPinned=false) {
+    let note = new Note(type,false,'blue');
+    //let td= new Todo('undone','blah blah blah!!')
+    note.isPinned=isPinned;
+    note.info.title = title;
+    switch (type) {
+        case 'NoteText':
+            note.info.text = noteContent//(userInput) ? userInput : getRandomText();
+            break;
+        case 'NoteImage':
+            note.info.url = noteContent
+            break;
+        case 'NoteToDos':
+            //var sumIs = grades.reduce(function(accumulator, grade){ return accumulator + grade; }, 0); 
+            //note.info.todos.push(new Todo('undone', word))
+            var todos=noteContent.split(',')
+            var todosMap=todos.map(todo=>new Todo('undone', todo))
+            note.info.todos=todosMap.slice(0,todosMap.length)
+            break;
+        default:
+        case 'NoteText':
+            note.info.text = noteContent
+            break;
+    }
     return note;
 }
 
@@ -45,7 +53,7 @@ function createNotes(numOfNotes) {
     var notes = [];
     if (!storageService.load(NOTES_KEY)) {
         for (var i = 0; i < numOfNotes; i++) {
-            notes.push(createNote('NoteText'));
+            notes.push(createNote('NoteText',`Note number ${i}`));
         }
         storageService.store(NOTES_KEY, notes)
     }
@@ -60,9 +68,9 @@ function getNotes() {
 
 function query(filterBy) {
     if (gNotes.length === 0) createNotes(8);
-    var field='title';
+    var field = 'title';
     for (const key in filterBy) {
-        if(filterBy[key]) field=key;
+        if (filterBy[key]) field = key;
         else continue;
     }
     if (filterBy) return Promise.resolve(gNotes.filter(note => {
@@ -77,14 +85,17 @@ function getNoteById(id) {
 }
 
 function saveNote(NoteDetails) {
-    ;
-    const newNote = createNote()//new Car(carDetails.name , carDetails.color) //reminder:do it with a class and a constructor
-    newNote.isPinned = NoteDetails.isPinned;
-    newNote.type = NoteDetails.type;
-    newNote.info.title = NoteDetails.title;
-    newNote.info.text = NoteDetails.text;
-    newNote.info.url = NoteDetails.url;
-    newNote.info.color = NoteDetails.color;
+    //createNote(type, title, userInput) 
+    const newNote = createNote(NoteDetails.type,
+        NoteDetails.title,
+        NoteDetails.noteContent,
+        NoteDetails.isPinned)
+    // newNote.isPinned = NoteDetails.isPinned;
+    // newNote.type = NoteDetails.type;
+    // newNote.info.title = NoteDetails.title;
+    // newNote.info.text = NoteDetails.text;
+    // newNote.info.url = NoteDetails.url;
+    // newNote.info.color = NoteDetails.color;
     gNotes = [...gNotes, newNote];
     return Promise.resolve(newNote)
 }
