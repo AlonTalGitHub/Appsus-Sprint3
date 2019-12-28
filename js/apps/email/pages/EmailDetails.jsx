@@ -9,7 +9,7 @@ export default class EmailDetails extends React.Component {
             <h2>{email.subject}</h2>
             <p>{email.body}</p>
             <button onClick={this.props.goBack}>BACK</button>
-            {/* <button onClick={this.onDelete}>Delete</button> */}
+            <button onClick={this.onDelete}>Delete</button>
         </div>
         )
     }
