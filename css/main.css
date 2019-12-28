@@ -1,71 +1,171 @@
 /* Fonts */
 
-@font-face { font-family: noto-sans; src: url(fonts/Noto_Sans/NotoSans-Regular.ttf); } 
+@font-face {
+    font-family: noto-sans;
+    src: url(fonts/Noto_Sans/NotoSans-Regular.ttf);
+}
 
-@font-face { font-family: noto-sans-bold; src: url(fonts/Noto_Sans/NotoSans-Bold.ttf); } 
+@font-face {
+    font-family: noto-sans-bold;
+    src: url(fonts/Noto_Sans/NotoSans-Bold.ttf);
+}
 
 
 /* Base */
 
-* { box-sizing: border-box; font-family: noto-sans, sans-serif; } 
+* {
+    box-sizing: border-box;
+    font-family: noto-sans, sans-serif;
+}
 
-a { text-decoration: none; color:inherit; } 
+a {
+    text-decoration: none;
+    color:inherit;
+}
 
 /* Layout */
 
-.container { margin: 0 auto; padding-left: 10px; padding-right: 10px; } 
+.container {
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 /* // Navbar // */
 
-.main-nav { height: 50px; border-bottom: 1px solid #e1e0e0; } 
+.main-nav {
+    height: 50px;
+    border-bottom: 1px solid #e1e0e0;
+}
 
-.main-logo { font-family: noto-sans-bold, sans-serif; font-size: 1.5rem; text-transform: uppercase; } 
+.main-logo {
+    font-family: noto-sans-bold, sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
 
-.main-menu>*:not(:first-child) { margin-left: 100px; } 
+.main-menu>*:not(:first-child) {
+    margin-left: 100px;
+}
 
-.main-menu a { font-size: 1rem; text-transform: uppercase; } 
+.main-menu a {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
 
 /* // Email App // */
 
 /* Email Search Bar */
 
-.email-search-line { width: 400px; background: #f1f3f4; border: 4px solid transparent; border-radius: 8px; margin-top: 5px; } 
+.email-search-line {
+    width: 400px;
+    background: #f1f3f4;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    margin-top: 5px;
+}
 
-.email-search-line>*:not(:first-child) { background-color: inherit; padding: 5px; border: none; outline: none; } 
+.email-search-line>*:not(:first-child) {
+    background-color: inherit;
+    padding: 5px;
+    border: none;
+    outline: none;
+}
 
-.svg-icon { width: 1em; height: 1em; fill: #000000; } 
+.svg-icon {
+    width: 1em;
+    height: 1em;
+    fill: #000000;
+  }
 
- /* Sidebar */
+  /* Sidebar */
 
-.email-compose-btn { font-family: noto-sans, sans-serif; padding-left: 16px; padding-right: 16px; margin: 10px 10px; line-height: 2.2em; border: 0.005em solid #c2c2c2; border-radius: 1000px; outline: none; background-color: #FFFFFF; transition: padding .6s; position: relative; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149); } 
+.email-compose-btn {
+    font-family: noto-sans, sans-serif;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 10px 10px;
+    line-height: 2.2em;
+    border: 0.005em solid #c2c2c2;
+    border-radius: 1000px;
+    outline: none;
+    background-color: #FFFFFF;
+    transition: padding .6s;
+    position: relative;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+}
 
-.email-sidebar-btn { border: none; background-color: white; } 
-/* .sidebar-list>* :first-child { color: #d93025; } */
+.email-sidebar-btn {
+    border: none;
+    background-color: white;
+}
+/* .sidebar-list>* :first-child {
+    color: #d93025;
+} */
 
 /* mail box */
 
-.email-list li { border-top: 0.5px solid #e1e0e0; } 
-.mail-compose { display: flex; flex-direction: column; font-family: noto-sans, sans-serif; background: beige; padding: 17px; height: 221px; position: absolute; bottom: 0; } 
-.note-container { widows: 250px; height: 250px; border: 2px solid black; border-radius: 20%; position: relative; margin:5px; } 
-.note-list { background-color:gray; list-style-type: none; } 
-.note-container span { position: absolute; left: 40%; } 
+.email-list li {
+    border-top: 0.5px solid #e1e0e0;
+}
+.mail-compose {
+    display: flex;
+    flex-direction: column;
+    font-family: noto-sans, sans-serif;
+    background: beige;
+    padding: 17px;
+    height: 221px;
+    position: absolute;
+    bottom: 0;
+}
 
+/* // Notes App // */
 
+.note-container{
+    widows: 250px;
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 20%;
+    position: relative;
+    margin:5px;
+}
+.note-list{
+    background-color:gray;
+    list-style-type: none;
+}
+.note-container span{
+    position: absolute;
+    left: 40%;
+}
 
 /* flex helpers */
 
-.flex { display: flex; } 
+.flex {
+    display: flex;
+}
 
-.flex.column { flex-direction: column; } 
+.flex.column {
+    flex-direction: column;
+}
 
-.flex.wrap { flex-wrap: wrap; } 
+.flex.wrap {
+    flex-wrap: wrap;
+}
 
-.space-between { justify-content: space-between; } 
+.space-between {
+    justify-content: space-between;
+}
 
-.align-center { align-items: center; } 
+.align-center {
+    align-items: center;
+}
 
 /* list helpers */
 
-.clean-list { margin: 0; padding: 0; list-style-type: none; } 
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
 
 /* Media Queries */
