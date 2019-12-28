@@ -1,6 +1,7 @@
 import keepService from '../services/keepService.js'
 import NotePreview from "../cmps/NotePreview.jsx";
 import FilterPreview from '../cmps/FilterPreview.jsx';
+import SepLine from '../cmps/SepLine.jsx';
 //import Filter from "../cmps/Cars/Filter.jsx";
 const { Link } = ReactRouterDOM
 export default class NoteList extends React.Component {
@@ -23,12 +24,19 @@ export default class NoteList extends React.Component {
     //     //console.log(changeFilterField);
     // }
 
+    
+
     render() {
-        return (<div>
+        return (<div className="note-list-container">
             <FilterPreview filterBy={this.props.filterBy} handleChange={this.props.handleChange} />
-            <ul className="note-list">{this.props.notes.map((note, index) => {
-                console.log(note)
-                return <NotePreview note={note} key={index} />
+            <ul className="note-list-pinned">{this.props.notes.filter(note=>{return (note.isPinned)}).map((note, index) => {
+                console.log(note.isPinned)
+                return <NotePreview note={note} key={index} loadNotes={this.props.loadNotes}/>
+            })}</ul>
+            <SepLine/>
+            <ul className="note-list-unpinned">{this.props.notes.filter(note=>{return (!note.isPinned)}).map((note, index) => {
+                console.log(note.isPinned)
+                return <NotePreview note={note} key={index} loadNotes={this.props.loadNotes}/>
             })}</ul>
         </div>
         );
