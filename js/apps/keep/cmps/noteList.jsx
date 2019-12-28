@@ -26,7 +26,7 @@ export default class NoteList extends React.Component {
     render() {
         return (<div>
             <FilterPreview filterBy={this.props.filterBy} handleChange={this.props.handleChange} />
-            <ul>{this.props.notes.map((note, index) => {
+            <ul className="note-list">{this.props.notes.map((note, index) => {
                 console.log(note)
                 return <NotePreview note={note} key={index} />
             })}</ul>

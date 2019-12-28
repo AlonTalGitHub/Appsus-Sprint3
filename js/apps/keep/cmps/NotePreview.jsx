@@ -14,7 +14,10 @@
 export default function NotePreview(props) {
     return (<li>
         <div className="note-container">
-        {props.note.info.title}
+            <span>{props.note.info.title}</span>
+            <div className="note-content-container">
+                <pre>{props.note.info.text}</pre>
+            </div>
         </div>
-        </li>) // style={{ color: props.car.color }}
+    </li>) // style={{ color: props.car.color }}
 }

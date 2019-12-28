@@ -7,3 +7,19 @@
     position: absolute;
     bottom: 0;
 }
+.note-container{
+    widows: 250px;
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 20%;
+    position: relative;
+    margin:5px;
+}
+.note-list{
+    background-color:gray;
+    list-style-type: none;
+}
+.note-container span{
+    position: absolute;
+    left: 40%;
+}
