@@ -37,8 +37,7 @@ export default class AddNote extends React.Component {
         return (<div className="input-group mb-3 note-add-container">
             <input type="text" className="note-add-bar" placeholder="Add Note..." />
             <button className="" type="button" onClick={this.handleSave} value='NoteText'>text</button>
-            <button className="" type="button" value='NoteImage' onClick={this.handleSave}>media</button>
-            <button className="" type="button" value='NoteImage' onClick={this.handleSave}>sound</button>
+            <button className="" type="button" value='NoteImage' onClick={this.handleSave}>image</button>
             <button className="" type="button" value='NoteToDos' onClick={this.handleSave}>todo</button>
         </div>)
     }
