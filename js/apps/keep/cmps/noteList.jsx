@@ -31,12 +31,12 @@ export default class NoteList extends React.Component {
             <FilterPreview filterBy={this.props.filterBy} handleChange={this.props.handleChange} />
             <ul className="note-list-pinned">{this.props.notes.filter(note=>{return (note.isPinned)}).map((note, index) => {
                 console.log(note.isPinned)
-                return <NotePreview note={note} key={index} loadNotes={this.props.loadNotes}/>
+                return <NotePreview note={note} key={index} loadNotes={this.props.loadNotes} updateNoteToEdit={this.props.updateNoteToEdit}/>
             })}</ul>
             <SepLine/>
             <ul className="note-list-unpinned">{this.props.notes.filter(note=>{return (!note.isPinned)}).map((note, index) => {
                 console.log(note.isPinned)
-                return <NotePreview note={note} key={index} loadNotes={this.props.loadNotes}/>
+                return <NotePreview note={note} key={index} loadNotes={this.props.loadNotes} updateNoteToEdit={this.props.updateNoteToEdit}/>
             })}</ul>
         </div>
         );

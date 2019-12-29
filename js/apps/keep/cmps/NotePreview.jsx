@@ -42,11 +42,14 @@ export default function NotePreview(props) {
     function onChangeContent(ev){
         let oldNoteId=props.note.id;
         keepService.deleteNote(props.note);
-        let NoteDetails={type:'NoteText',title:'fakeNote',noteContent:'fakeContent'}
-        let newNote= keepService.saveNote(NoteDetails)
-      // let newNote= keepService.createNote('NoteText','fakeNote','fakeContent',false)
-        newNote.then((res) => { res.id=oldNoteId;
-            props.loadNotes(res) });
+    //     let NoteDetails={type:'NoteText',title:'fakeNote',noteContent:'fakeContent'}
+    //     let newNote= keepService.saveNote(NoteDetails)
+    //   // let newNote= keepService.createNote('NoteText','fakeNote','fakeContent',false)
+    //     newNote.then((res) => {
+    //         console.log(res)
+    //         res.id=oldNoteId;
+    //         props.loadNotes(res) });
+            props.updateNoteToEdit(oldNoteId);
        //newNote.then(f=>{id=oldNoteId;})
       // props.loadNotes();
     }

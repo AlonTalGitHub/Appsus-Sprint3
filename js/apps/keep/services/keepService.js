@@ -90,6 +90,18 @@ function saveNote(NoteDetails) {
     storageService.store(NOTES_KEY, gNotes)
     return Promise.resolve(newNote)
 }
+function updateNote(note,objInfo) {
+    // const newNote = createNote(NoteDetails.type,
+    //     NoteDetails.title,
+    //     NoteDetails.noteContent,
+    //     NoteDetails.isPinned
+    note.type=objInfo.type;
+    delete objInfo.type;
+    note.info=objInfo;
+    gNotes = [...gNotes,note];
+    storageService.store(NOTES_KEY, gNotes)
+    return Promise.resolve(note)
+}
 function deleteNote(noteToDelete) {
     let newNotes = gNotes.filter(note => { return (note.id !== noteToDelete.id) })
     gNotes = newNotes;
@@ -103,6 +115,12 @@ function updateNoteColor(note, newColor) {
     note.backgroundColor = newColor;
     storageService.store(NOTES_KEY, gNotes)
 }
+// function getNoteById(id){
+//     let requestedNote=gNotes.filter(note=>{
+//         if(note.id===id) return note
+//     })
+//     return Promise.resolve(requestedNote)
+// }
 export default {
     getNotes,
     createNotes,
@@ -112,5 +130,6 @@ export default {
     getNoteById,
     notePinToggle,
     deleteNote,
-    updateNoteColor
+    updateNoteColor,
+    updateNote
 }

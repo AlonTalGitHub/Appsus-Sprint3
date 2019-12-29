@@ -52,7 +52,7 @@ a { text-decoration: none; color:inherit; }
 
 /* // Notes App // */
 .note-section { display: flex; flex-direction: column; } 
-.note-container { width: 250px; height: 250px; border: 2px solid black; border-radius: 20%; position: relative; margin:5px; padding: 10px } 
+.note-container { width: 250px; height: 250px; border: 2px solid black; border-radius: 10%; position: relative; margin:5px; padding: 10px } 
 .note-list-unpinned { list-style-type: none; display: grid; grid-gap: 30px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } /*background-color:rgb(106, 69, 243); */
 .note-list-pinned { list-style-type: none; display: grid; grid-gap: 30px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } /*background-color:rgb(22, 6, 167); */
 .note-list-container { display: flex; flex-direction: column; width:90%; } 
@@ -65,12 +65,16 @@ tr.note-head { text-align:center; height:40px; }
 .note-edit-container { height:40px; } 
 .note-edit-btns { display:flex; padding-left: 20px; border: 2px solid black; border-radius: 7000px; } 
 .note-edit-btn { margin:5px; cursor: pointer; } 
+.note-modal-head { margin-left: 133px; font-weight: bold; } 
+.note-edit-btn-OK { width: 25px; margin-left: 135px; margin-top: 0px; cursor: pointer; border: 1px solid black; border-radius: 7px; } 
 .note-edit-btn.color { position:relative; } 
 .note-add-container { padding-top: 65px; z-index: 999; } 
-#background-video { position:fixed; left:-270px; top: -90px; z-index:0; } 
+#background-video { position:fixed; z-index:0; left:-5px; } /*left:-270px; top: -90px; */
 .sort-keeps-div { z-index: 999; margin-top: 25px; } 
 .hr { display: block; border: 1px solid #000000; height: 10px; margin: 10px 0; width: 760px; } 
-.note-modal-screen { width: 500%; height: 500%; position: absolute; left: 0; top: 0; margin: 5px; padding: 10px;background-color: gray; opacity: 0.1; z-index: 2000;} 
+.note-modal-screen { width: 500%; height: 500%; position: absolute; left: 0; top: 0; margin: 5px; padding: 10px; background-color: gray; opacity: 0.8; z-index: 2000; } 
+.note-modal-window { height: 300px; border: 2px solid black; border-radius: 10px; position: absolute; margin: 5px; padding: 10px; background-color:rgb(4, 113, 177); /* left: 30%; */
+ top: 50%; z-index: 2500; left: calc((100% - 330px)/2); width: 325px; display: flex; flex-direction: column; } 
 /* flex helpers */
 
 .flex { display: flex; } 
