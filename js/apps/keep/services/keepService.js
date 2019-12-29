@@ -13,10 +13,9 @@ function genId() {
     }
     return id;
 }
-function createNote(type, title, noteContent,isPinned=false) {
-    let note = new Note(type,false,'blue');
-    //let td= new Todo('undone','blah blah blah!!')
-    note.isPinned=isPinned;
+function createNote(type, title, noteContent, isPinned = false) {
+    let note = new Note(type, false, '#add8e6');
+    note.isPinned = isPinned;
     note.info.title = title;
     switch (type) {
         case 'NoteText':
@@ -26,11 +25,9 @@ function createNote(type, title, noteContent,isPinned=false) {
             note.info.url = noteContent
             break;
         case 'NoteToDos':
-            //var sumIs = grades.reduce(function(accumulator, grade){ return accumulator + grade; }, 0); 
-            //note.info.todos.push(new Todo('undone', word))
-            var todos=noteContent.split(',')
-            var todosMap=todos.map(todo=>new Todo('undone', todo))
-            note.info.todos=todosMap.slice(0,todosMap.length)
+            var todos = noteContent.split(',')
+            var todosMap = todos.map(todo => new Todo('undone', todo))
+            note.info.todos = todosMap.slice(0, todosMap.length)
             break;
         default:
         case 'NoteText':
@@ -53,7 +50,7 @@ function createNotes(numOfNotes) {
     var notes = [];
     if (!storageService.load(NOTES_KEY)) {
         for (var i = 0; i < numOfNotes; i++) {
-            notes.push(createNote('NoteText',`Note number ${i}`));
+            notes.push(createNote('NoteText', `Note number ${i}`, getRandomText()));
         }
         storageService.store(NOTES_KEY, notes)
     }
@@ -85,26 +82,54 @@ function getNoteById(id) {
 }
 
 function saveNote(NoteDetails) {
-    //createNote(type, title, userInput) 
     const newNote = createNote(NoteDetails.type,
         NoteDetails.title,
         NoteDetails.noteContent,
         NoteDetails.isPinned)
-    // newNote.isPinned = NoteDetails.isPinned;
-    // newNote.type = NoteDetails.type;
-    // newNote.info.title = NoteDetails.title;
-    // newNote.info.text = NoteDetails.text;
-    // newNote.info.url = NoteDetails.url;
-    // newNote.info.color = NoteDetails.color;
     gNotes = [...gNotes, newNote];
+    storageService.store(NOTES_KEY, gNotes)
     return Promise.resolve(newNote)
 }
-
+function updateNote(note,objInfo) {
+    // const newNote = createNote(NoteDetails.type,
+    //     NoteDetails.title,
+    //     NoteDetails.noteContent,
+    //     NoteDetails.isPinned
+    note.type=objInfo.type;
+    delete objInfo.type;
+    note.info=objInfo;
+    gNotes = [...gNotes,note];
+    storageService.store(NOTES_KEY, gNotes)
+    return Promise.resolve(note)
+}
+function deleteNote(noteToDelete) {
+    let newNotes = gNotes.filter(note => { return (note.id !== noteToDelete.id) })
+    gNotes = newNotes;
+    storageService.store(NOTES_KEY, gNotes)
+}
+function notePinToggle(note) {
+    note.isPinned = !note.isPinned
+    storageService.store(NOTES_KEY, gNotes)
+}
+function updateNoteColor(note, newColor) {
+    note.backgroundColor = newColor;
+    storageService.store(NOTES_KEY, gNotes)
+}
+// function getNoteById(id){
+//     let requestedNote=gNotes.filter(note=>{
+//         if(note.id===id) return note
+//     })
+//     return Promise.resolve(requestedNote)
+// }
 export default {
     getNotes,
     createNotes,
     createNote,
     query,
     saveNote,
-    getNoteById
+    getNoteById,
+    notePinToggle,
+    deleteNote,
+    updateNoteColor,
+    updateNote
 }

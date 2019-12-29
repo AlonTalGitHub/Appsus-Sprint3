@@ -20,7 +20,7 @@
 import keepService from '../services/keepService.js'
 export default class AddNote extends React.Component {
     handleSave = (event) => {
-        var newNote = document.querySelector('input.add-note-bar')
+        var newNote = document.querySelector('input.note-add-bar')
         var noteTitle = newNote.value.split(':')[0]
         var noteContent = newNote.value.split(':')[1]
         var noteDetails = {
@@ -30,12 +30,12 @@ export default class AddNote extends React.Component {
             isPinned: false
         }
         var NOTE = keepService.saveNote(noteDetails);
-        NOTE.then((res) => { this.props.updateNotes(res) });
+        NOTE.then((res) => { this.props.loadNotes(res) });
         return noteDetails;
     }
     render() {
-        return (<div className="input-group mb-3 add-note-conatiner">
-            <input type="text" className="add-note-bar" placeholder="Add Note..." />
+        return (<div className="input-group mb-3 note-add-container">
+            <input type="text" className="note-add-bar" placeholder="Add Note..." />
             <button className="" type="button" onClick={this.handleSave} value='NoteText'>text</button>
             <button className="" type="button" value='NoteImage' onClick={this.handleSave}>media</button>
             <button className="" type="button" value='NoteImage' onClick={this.handleSave}>sound</button>

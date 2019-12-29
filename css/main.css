@@ -20,8 +20,17 @@
 
 a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
 }
+
+
+/*ROOT ELEMENT!!*/
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* Layout */
 
@@ -31,12 +40,19 @@ a {
     padding-right: 10px;
 }
 
+
 /* // Navbar // */
 
 .main-nav {
     height: 50px;
     border-bottom: 1px solid #e1e0e0;
+    margin-left: 0px;
+    z-index: 999;
+    display: flex;
 }
+
+
+/* position:fixed; z-index: 999; */
 
 .main-logo {
     font-family: noto-sans-bold, sans-serif;
@@ -44,8 +60,18 @@ a {
     text-transform: uppercase;
 }
 
-.main-menu>*:not(:first-child) {
-    margin-left: 100px;
+
+/* .main-menu>*:not(:first-child) { margin-left: 100px; } */
+
+
+/* .main-menu>*:not(:first-child) { margin-left:25px; } */
+
+.main-menu {
+    margin-left: 90%;
+}
+
+.main-menu>* {
+    margin-left: 25px;
 }
 
 .main-menu a {
@@ -53,8 +79,10 @@ a {
     text-transform: uppercase;
 }
 
+
 /* // Email App // */
 
+<<<<<<< HEAD
 .email-main-content {
     display: flex;
     margin-top: 5px;
@@ -72,6 +100,8 @@ a {
     font-size: 0.75rem;
     background-color: #f1f3f4;
 }
+=======
+>>>>>>> 6158d24f2477bfc9bd7900d647de2ee8d8f7c968
 
 /* Email Search Bar */
 
@@ -94,9 +124,10 @@ a {
     width: 1em;
     height: 1em;
     fill: #000000;
-  }
+}
 
-  /* Sidebar */
+
+/* Sidebar */
 
 .email-compose-btn {
     font-family: noto-sans, sans-serif;
@@ -110,16 +141,17 @@ a {
     background-color: #FFFFFF;
     transition: padding .6s;
     position: relative;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
 }
 
 .email-sidebar-btn {
     border: none;
     background-color: white;
 }
-/* .sidebar-list>* :first-child {
-    color: #d93025;
-} */
+
+
+/* .sidebar-list>* :first-child { color: #d93025; } */
+
 
 /* mail box */
 .email-list {
@@ -129,6 +161,7 @@ a {
 .email-list li {
     border-top: 0.5px solid #e1e0e0;
 }
+
 .mail-compose {
     display: flex;
     flex-direction: column;
@@ -153,24 +186,171 @@ a {
     border-bottom: 0.5px solid #e1e0e0;
 }
 
+
 /* // Notes App // */
 
-.note-container{
-    widows: 250px;
+.note-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-container {
+    width: 250px;
     height: 250px;
     border: 2px solid black;
-    border-radius: 20%;
+    border-radius: 10%;
     position: relative;
-    margin:5px;
+    margin: 5px;
+    padding: 10px
 }
-.note-list{
-    background-color:gray;
+
+.note-list-unpinned {
     list-style-type: none;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.note-container span{
+
+
+/*background-color:rgb(106, 69, 243); */
+
+.note-list-pinned {
+    list-style-type: none;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+
+/*background-color:rgb(22, 6, 167); */
+
+.note-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+td {
+    position: relative;
+}
+
+.note-content {
     position: absolute;
-    left: 40%;
+    left: 0px;
+    top: 20px;
+    text-align: center;
+    text-align: center;
 }
+
+.note-pin {
+    cursor: pointer;
+}
+
+tr.note-head {
+    text-align: center;
+    height: 40px;
+}
+
+.note-head-title {
+    text-decoration: underline;
+    text-decoration-style: double;
+}
+
+.note-trash-bin {
+    cursor: pointer;
+}
+
+.note-edit-container {
+    height: 40px;
+}
+
+.note-edit-btns {
+    display: flex;
+    padding-left: 20px;
+    border: 2px solid black;
+    border-radius: 7000px;
+}
+
+.note-edit-btn {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.note-modal-head {
+    margin-left: 133px;
+    font-weight: bold;
+}
+
+.note-edit-btn-OK {
+    width: 25px;
+    margin-left: 135px;
+    margin-top: 0px;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.note-edit-btn.color {
+    position: relative;
+}
+
+.note-add-container {
+    padding-top: 65px;
+    z-index: 999;
+}
+
+#background-video {
+    position: fixed;
+    z-index: 0;
+    left: -5px;
+}
+
+
+/*left:-270px; top: -90px; */
+
+.sort-keeps-div {
+    z-index: 999;
+    margin-top: 25px;
+}
+
+.hr {
+    display: block;
+    border: 1px solid #000000;
+    height: 10px;
+    margin: 10px 0;
+    width: 760px;
+}
+
+.note-modal-screen {
+    width: 500%;
+    height: 500%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 5px;
+    padding: 10px;
+    background-color: gray;
+    opacity: 0.8;
+    z-index: 2000;
+}
+
+.note-modal-window {
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(4, 113, 177);
+    /* left: 30%; */
+    top: 50%;
+    z-index: 2500;
+    left: calc((100% - 330px)/2);
+    width: 325px;
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* flex helpers */
 
@@ -194,6 +374,7 @@ a {
     align-items: center;
 }
 
+
 /* list helpers */
 
 .clean-list {
@@ -201,5 +382,6 @@ a {
     padding: 0;
     list-style-type: none;
 }
+
 
 /* Media Queries */
