@@ -5,6 +5,8 @@ export default class Email{
         this.id = getRandomID(),
         this.subject = subject,
         this.body = body,
+        this.from = 'Me: ',
+        this.to = 'Me: ',
         this.isRead = false,
         this.isReceived = true,
         this.isStarred = false,
