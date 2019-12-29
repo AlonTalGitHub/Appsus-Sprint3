@@ -11,8 +11,8 @@ export default class EmailPreview extends React.Component {
         // const props = this.props;
         const { props } = this;
         return <Link to={`/emails/${props.email.id}`}>
-            <li onClick={this.onSelectEmail}>
-                <span>{props.email.subject}</span>
+            <li className={props.email.isRead ? "email-read" : "email-unread"} onClick={this.onSelectEmail}>
+                <span>{props.email.from}    {props.email.subject}</span>
             </li>
         </Link>
     }

@@ -19,11 +19,17 @@ export default class EmailApp extends React.Component {
         this.loadEmails()
     }
 
+    // componentDidUpdate() {
+    //     this.loadEmails()
+    // }
+
     loadEmails = ()=>{
-        console.log(this.state.filterBy);
-        emailService.query(this.state.filterBy).then((emails) => {
+        console.log('loading emails');
+        
+        emailService.query(this.state.filterBy).then((emails) => {            
             this.setState({ emails });
         })
+        this.setFolder('inbox')
     }
 
     onFilter = (filterBy) =>{
@@ -31,6 +37,8 @@ export default class EmailApp extends React.Component {
     }
 
     setFolder = (folder) =>{
+        console.log('set folder');
+        
         emailService.getEmailsToRender(folder).then((emails) => {
             this.setState({ emails });
         })
@@ -42,13 +50,18 @@ export default class EmailApp extends React.Component {
         }))
     }
 
+    onCompose = () => {
+        this.loadEmails()
+    }
+
     render() {
         return <React.Fragment>
             <Filter onFilter={this.onFilter}></Filter>
-            {this.state.isComposing && <EmailCompose></EmailCompose>}
-
-            <Sidebar toggleCompose={this.toggleCompose} setFolder={this.setFolder}></Sidebar>
-            <EmailList emails={this.state.emails}></EmailList>
+            {this.state.isComposing && <EmailCompose toggleCompose={this.toggleCompose} onCompose={this.onCompose}></EmailCompose>}
+            <div className="email-main-content">
+                <Sidebar toggleCompose={this.toggleCompose} setFolder={this.setFolder}></Sidebar>
+                <EmailList emails={this.state.emails}></EmailList>
+            </div>
         </React.Fragment>
     }
 }

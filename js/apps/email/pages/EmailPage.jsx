@@ -18,7 +18,6 @@ export default class EmailPage extends React.Component {
     }
 
     loadEmail() {
-        console.log(this.props)
         const { id } = this.props.match.params;
         emailService.getEmailById(id).then(email => {
             this.setState({ email })
@@ -30,15 +29,19 @@ export default class EmailPage extends React.Component {
         // this.props.history.goBack()
     }
 
-    // onDelete = (pet)=>{
-    //     petsService.deletePet(pet).then(()=>{
-    //         this.props.history.push('/pets')
-    //     });
-    // }
+    onDelete = (email) => {
+        emailService.deleteEmail(email).then(()=>{
+            this.props.history.push('/emails')
+        });
+    }
+
+    onSetRead = (email) => {
+        emailService.setRead(email).then(()=>{
+        });
+    }
     
     render() {
-        console.log(this.state.email)
         if (!this.state.email) return <div className="loading">Loading...</div>
-        return <EmailDetails email={this.state.email} goBack={this.goBack}></EmailDetails>
+        return <EmailDetails email={this.state.email} onSetRead={this.onSetRead} onDelete={this.onDelete} goBack={this.goBack}></EmailDetails>
     }
 }

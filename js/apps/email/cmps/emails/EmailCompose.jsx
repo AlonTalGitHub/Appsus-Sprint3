@@ -16,13 +16,17 @@ export default class EmailCompose extends React.Component{
 
     onSendEmail=(ev)=>{
         ev.preventDefault();
-        emailService.sendEmail({...this.state}).then(email=>{
+        const { props } = this;
+        props.toggleCompose();
+        emailService.addEmail({...this.state}).then(email=>{
+            props.onCompose();
+            console.log(props);
             // eventBusService.emit('toggleModal' , email);
-            this.props.history.push("/emails")
+            // this.props.history.push("/emails")
         })
     }
 
-    render(){
+    render() {
         return <form  className="mail-compose">
             <input type="text" value={this.state.subject} name="subject" onChange={this.inputChange} placeholder="subject"></input>
             <input type="text" value={this.state.body} name="body" onChange={this.inputChange}></input>
