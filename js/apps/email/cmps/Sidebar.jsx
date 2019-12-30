@@ -1,6 +1,6 @@
 const { NavLink } = ReactRouterDOM
 export default function Sidebar(props) {
-    return <nav>
+    return <nav className="email-main-sideber">
         <button className="email-compose-btn" onClick={props.toggleCompose}>+ Compose</button>
         <ul className="sidebar-list clean-list">
             <li><button className="email-sidebar-btn" onClick={() => props.setFolder('inbox')}><svg className="svg-icon" viewBox="0 0 20 20">

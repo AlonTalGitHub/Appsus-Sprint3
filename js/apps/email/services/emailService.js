@@ -1,5 +1,6 @@
 import Email from "./Email.js";
 import storageService from "./storageService.js"
+import { string } from "prop-types";
 
 export default {
     query,
@@ -26,7 +27,7 @@ let gEmails = [new Email('Have a Wonderful Holiday' , 'As the year comes to a cl
 
 function query(filterBy){
     if (filterBy) return Promise.resolve(gEmails.filter(email=>{
-        return email.subject.includes(filterBy.subject) && email.body.includes(filterBy.body) && !email.isDeleted
+        return email.subject.toLowerCase().includes(filterBy.subject) && email.body.includes(filterBy.body) && !email.isDeleted
     }))
 
     return Promise.resolve([...gEmails]);

@@ -25,11 +25,12 @@ export default class EmailApp extends React.Component {
 
     loadEmails = ()=>{
         console.log('loading emails');
+        console.log(this.state.filterBy);
+        
         
         emailService.query(this.state.filterBy).then((emails) => {            
             this.setState({ emails });
         })
-        this.setFolder('inbox')
     }
 
     onFilter = (filterBy) =>{

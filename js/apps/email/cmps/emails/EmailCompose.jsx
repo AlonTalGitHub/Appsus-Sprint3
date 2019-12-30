@@ -30,7 +30,7 @@ export default class EmailCompose extends React.Component{
         return <form  className="mail-compose">
             <input type="text" value={this.state.subject} name="subject" onChange={this.inputChange} placeholder="subject"></input>
             <input type="text" value={this.state.body} name="body" onChange={this.inputChange}></input>
-            <button onClick={this.onSendEmail}>Send</button>
+            <button className="email-send-btn" onClick={this.onSendEmail}>Send</button>
         </form>
     }
 }
